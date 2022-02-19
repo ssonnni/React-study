@@ -1,0 +1,47 @@
+@import "./colors.module.scss";
+@import "./common.module.scss";
+
+.myScss {
+  margin: auto; // .myScss라는 클래스에 대한 css 속성
+
+  &:after {
+    // .myScss:after ( 앞에 &기호가 붙으면 붙어있다는 뜻)
+    display: block;
+    content: "";
+    clear: both;
+    float: none;
+  }
+
+  .myScssBox {
+    // .myScss .myScssBox ( 앞에 .(점)기호가 있다면 자손셀렉터라는 뜻)
+    cursor: pointer;
+    float: left;
+
+    // .red 클래스가 .box와 함께 사용되었을 때
+    // -> .myScss .myScssBox.red
+    &.red {
+      background-color: $red;
+      @include myMixin(1);
+    }
+    &.green {
+      background-color: $green;
+      @include myMixin(2);
+    }
+    &.blue {
+      background-color: $blue;
+      @include myMixin(3);
+    }
+    &.orange {
+      background-color: $orange;
+      @include myMixin(4);
+    }
+    &.yellow {
+      background-color: $yellow;
+      @include myMixin(5);
+    }
+    &.pink {
+      background-color: $pink;
+      @include myMixin(6);
+    }
+  }
+}

@@ -86,6 +86,7 @@ yarn create react-app 02-simple-spa
 ```shell
 yarn add react-router-dom
 yarn add qs
+yarn react-helmet
 ```
 
 ### 2) 프로젝트 생성 후 기초작업
@@ -94,9 +95,9 @@ yarn add qs
 1. **App.js** 파일에서 App.css와 logo.svg에 대한 참조(import) 구문 제거
 1. **index.js** 파일에서 index.css에 대한 참조(import) 구문 제거
 1. index.js 파일에서 다음의 구문 추가
-    ```js
-    import { BrowserRouter } from 'react-router-dom';
-    ```
+   ```js
+   import { BrowserRouter } from "react-router-dom";
+   ```
 1. index.js 파일에서 `<App />`을 `<BrowserRouter><App /></BrowserRouter>`로 변경
 1. App.js 파일에 다음을 추가
    ```js
@@ -111,8 +112,7 @@ yarn add qs
 yarn start
 ```
 
-
--------------------------------------------
+---
 
 ## #02. Single Page Application (=SPA)
 
@@ -143,6 +143,5 @@ JS코드가 비대해 질 수 있다. 코드 스플리팅 기법으로 해결가
 하나의 HTML이므로 SEO에 취약하다 (서버사이드 렌더링으로 해결 가능)
 
 서버사이드 랜더링 = React + Node / React + PHP / React + Java(Spring)
-
 
 > 이후 내용은 수업시간에 소스코드와 주석을 통해 설명합니다.

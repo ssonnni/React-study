@@ -69,14 +69,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
-
-# 07-hook-event
+# 06-hook-event
 
 ## #01. 프로젝트 생성
 
 ```shell
-yarn create react-app 07-hook-event
+yarn create react-app 06-hook-event
 ```
 
 ### 1) 추가 패키지 설치
@@ -84,18 +82,14 @@ yarn create react-app 07-hook-event
 프로젝트를 VSCode로 열고, `Ctrl` + `~`를 눌러 터미널 실행
 
 ```shell
-yarn add react-router-dom
-yarn add qs
-yarn add node-sass
-yarn add styled-components
-yarn add react-helmet
-yarn add react-bootstrap
-yarn add bootstrap@3
+# 여러개 설치 시 띄어쓰기로 구분하여 한번에 설치 가능
+yarn add react-router-dom qs react-helmet node-sass styled-components
+
+# 리액트가 의존하지 않는 독립 패키지. 날짜 처리를 위해 사용함.
 yarn add dayjs
 ```
 
 > moment는 날짜 처리를 위한 자바스크립트 공용 라이브러리. (리액트와는 직접적인 관련 없음)
-
 
 ### 2) 프로젝트 생성 후 기초작업
 
@@ -103,18 +97,18 @@ yarn add dayjs
 1. **App.js** 파일에서 App.css와 logo.svg에 대한 참조(import) 구문 제거
 1. **index.js** 파일에서 index.css에 대한 참조(import) 구문 제거
 1. index.js 파일에서 다음의 구문 추가
-    ```js
-    import { BrowserRouter } from 'react-router-dom';
-    import 'bootstrap/dist/css/bootstrap.min.css';
-    ```
+   ```js
+   import { BrowserRouter } from "react-router-dom";
+   import "bootstrap/dist/css/bootstrap.min.css";
+   ```
 1. index.js 파일에서 `<App />`을 `<BrowserRouter><App /></BrowserRouter>`로 변경
 1. App.js 파일에 다음을 추가
    ```js
-   import { Route, NavLink, Switch } from "react-router-dom";
+   import { Route, NavLink, Routes } from "react-router-dom";
    ```
    혹은
    ```js
-   import { Route, Link, Switch } from "react-router-dom";
+   import { Route, Link, Routes } from "react-router-dom";
    ```
 
 ## 3) 프로젝트 실행
@@ -125,7 +119,7 @@ yarn add dayjs
 yarn start
 ```
 
---------------------
+---
 
 ## #02. 리액트 이벤트 시스템
 
@@ -144,7 +138,7 @@ yarn start
 웹에서는 HTML 태그에서 명시하는 이벤트 속성이 이에 해당한다.
 
 ```html
-<a onclick="...">
+<a onclick="..."></a>
 ```
 
 #### c) 이벤트 핸들러
@@ -154,13 +148,13 @@ yarn start
 ### 3) 리액트에서 이벤트 구현시 주의점
 
 1. 이벤트 리스너의 이름은 HTML속성이 아닌 JSX에 의한 자바스크립트 프로퍼티이므로 카멜 표기법으로 작성.
-    * onclick (X)
-    * onClick (O)
+   - onclick (X)
+   - onClick (O)
 2. 이벤트 리스너에 전달할 이벤트 핸들러는 코드 형태가 아니라 반드시 함수 형태로 전달해야 한다.
 3. DOM 요소(=HTML 태그)에만 이벤트 리스너가 존재한다.
-    * 직접 구현한 컴포넌트에 대해서는 설정 불가
+   - 직접 구현한 컴포넌트에 대해서는 설정 불가
 
---------------------
+---
 
 ## #03. Hooks
 
@@ -183,7 +177,6 @@ import React, {useState} from 'react';
 const [상태변수, 변수에대한setter함수] = useState(초기값);
 ```
 
-
 `useState()`함수를 import하지 않고 직접 사용하는 경우
 
 ```javascript
@@ -193,8 +186,7 @@ const [상태변수, 변수에대한setter함수] = React.useState(초기값);
 - 가장 기본적인 Hook 함수
 - 함수형 컴포넌트에서 state값을 생성한다.
 - 하나의 useState 함수는 하나의 상태 값만 관리할 수 있다.
-  - 컴포넌트에서 관리해야 할 상태가 여러 개라면 useState를 여러번 사용하면 된다.
-
+- 컴포넌트에서 관리해야 할 상태가 여러 개라면 useState를 여러번 사용하면 된다.
 
 #### b) useEffect
 
@@ -255,7 +247,6 @@ useEffect(() => {
 
 거의 사용하지 않음.
 
-
 ### 2) 특정한 경우에만 사용되는 기능들.
 
 > 다음의 Hook는 이전 섹션에서의 기본 Hook의 변경이거나 특정한 경우에만 필요한 것입니다. 익히는 것에 너무 압박받지는 마세요.
@@ -271,7 +262,6 @@ state값이 다수의 하위값을 포함하거나 이를 활용하는 복잡한
 #### b) useRef
 
 함수형 컴포넌트에서 ref를 쉽게 사용할 수 있도록 처리해 준다.
-
 
 #### c) useMemo
 
@@ -293,4 +283,3 @@ state값이 다수의 하위값을 포함하거나 이를 활용하는 복잡한
 
 1. 반복문, 조건문, 중첩된 함수 내에서 Hook을 실행할 수 없다.
 2. React Component 내에서만 호출할 수 있다.
-

@@ -6,6 +6,11 @@ import Mystate from "./pages/MyState";
 import DateRange1 from "./pages/DateRange1";
 import MyEffect from "./pages/MyEffect";
 import MyReducer from "./pages/MyReducer";
+import DateRange2 from "./pages/DateRange2";
+import MyMemo from "./pages/MyMemo";
+import MyCallback from "./pages/MyCallback";
+import MyRef from "./pages/MyRef";
+import MyWidth from "./pages/MyWidth";
 
 /** 메뉴링크 --> NavLink: 현재 머물고 있는 페이지와 관련된 링크에 CSS적용 */
 const MenuLink = styled(NavLink)`
@@ -59,6 +64,11 @@ function App() {
         <MenuLink to="/daterange1">[DateRange1]</MenuLink>
         <MenuLink to="/myeffect">[MyEffect]</MenuLink>
         <MenuLink to="/myreducer">[MyReducer]</MenuLink>
+        <MenuLink to="/daterange2">[DateRange2]</MenuLink>
+        <MenuLink to="/mymemo">[MyMemo]</MenuLink>
+        <MenuLink to="/mycallback">[MyCallback]</MenuLink>
+        <MenuLink to="/myref">[MyRef]</MenuLink>
+        <MenuLink to="/mywidth">[MyWidth]</MenuLink>
       </nav>
       <hr />
 
@@ -67,6 +77,11 @@ function App() {
         <Route path="/daterange1" element={<DateRange1 />} />
         <Route path="/myeffect" element={<MyEffect />} />
         <Route path="/myreducer" element={<MyReducer />} />
+        <Route path="/daterange2" element={<DateRange2 />} />
+        <Route path="/mymemo" element={<MyMemo />} />
+        <Route path="/mycallback" element={<MyCallback />} />
+        <Route path="/myref" element={<MyRef />} />
+        <Route path="/mywidth" element={<MyWidth />} />
       </Routes>
     </div>
   );

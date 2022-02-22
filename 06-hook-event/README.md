@@ -259,15 +259,18 @@ useState의 대체 함수로 이해할 수 있다.
 
 state값이 다수의 하위값을 포함하거나 이를 활용하는 복잡한 로직을 만드는 경우에 useState보다 useReducer를 선호한다.
 
-<사용법>
+### <사용법>
 
 ```javascript
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
 
 -state:현재 상태
+
 -dispatch: action을 발생시키는 함수
+
 -reducer:state와 action을 받아 새로운 state를 반환하는 함수
+
 -initialState:초기값
 
 #### b) useRef

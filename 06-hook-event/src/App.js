@@ -4,6 +4,8 @@ import { NavLink, Route, Routes } from "react-router-dom";
 
 import Mystate from "./pages/MyState";
 import DateRange1 from "./pages/DateRange1";
+import MyEffect from "./pages/MyEffect";
+import MyReducer from "./pages/MyReducer";
 
 /** 메뉴링크 --> NavLink: 현재 머물고 있는 페이지와 관련된 링크에 CSS적용 */
 const MenuLink = styled(NavLink)`
@@ -55,12 +57,16 @@ function App() {
       <nav>
         <MenuLink to="/mystate">[Mystate]</MenuLink>
         <MenuLink to="/daterange1">[DateRange1]</MenuLink>
+        <MenuLink to="/myeffect">[MyEffect]</MenuLink>
+        <MenuLink to="/myreducer">[MyReducer]</MenuLink>
       </nav>
       <hr />
 
       <Routes>
         <Route path="/mystate" element={<Mystate />} />
         <Route path="/daterange1" element={<DateRange1 />} />
+        <Route path="/myeffect" element={<MyEffect />} />
+        <Route path="/myreducer" element={<MyReducer />} />
       </Routes>
     </div>
   );

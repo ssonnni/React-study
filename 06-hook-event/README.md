@@ -259,7 +259,7 @@ useState의 대체 함수로 이해할 수 있다.
 
 state값이 다수의 하위값을 포함하거나 이를 활용하는 복잡한 로직을 만드는 경우에 useState보다 useReducer를 선호한다.
 
-### <사용법>
+#### <사용법>
 
 ```javascript
 const [state, dispatch] = useReducer(reducer, initialState);

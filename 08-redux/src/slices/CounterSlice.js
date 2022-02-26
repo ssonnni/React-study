@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const counterSlice = createSlice({
   name: "counter",
   //이 모듈이 관리하고자하는 상태값들을 명시
-  initialSstate: {
+  initialState: {
     number: 0,
     color: "#000",
   },

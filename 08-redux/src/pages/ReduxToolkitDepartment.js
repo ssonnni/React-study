@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getList } from "../slices/DepartmentSlice";
 
 const ReduxToolkitDepartment = () => {
-  React.usseEffect(() => console.clear(), []);
+  React.useEffect(() => console.clear(), []);
 
   //hook을 통해 slice가 관리하는 상태값 가져오기
   const { rt, rtmsg, item, loading } = useSelector((state) => state.department);

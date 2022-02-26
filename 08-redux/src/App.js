@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { NavLink, Routes, Route } from "react-router-dom";
 
 import ReduxToolkitCounter from "./pages/ReduxToolkitCounter";
-// import ReduxToolkitDepartment from "./pages/ReduxToolkitDepartment";
+import ReduxToolkitDepartment from "./pages/ReduxToolkitDepartment";
 
 /* 메뉴링크 -> 06.hook-event 예제의 App.js파일의 내용과 동일*/
 const MenuLink = styled(NavLink)`
@@ -53,17 +53,17 @@ const App = () => {
       <h1>Redux Toolkit</h1>
 
       <MenuLink to="/redux_toolkit_counter">ReduxToolkitCounter</MenuLink>
-      {/* <MenuLink to="/redux_toolkit_department">ReduxToolkitDepartment</MenuLink> */}
+      <MenuLink to="/redux_toolkit_department">ReduxToolkitDepartment</MenuLink>
       <hr />
       <Routes>
         <Route
           path="/redux_toolkit_counter"
           element={<ReduxToolkitCounter />}
         />
-        {/* <Route
+        <Route
           path="/redux_toolkit_department"
           element={<ReduxToolkitDepartment />}
-        /> */}
+        />
       </Routes>
     </div>
   );

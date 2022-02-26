@@ -31,6 +31,7 @@ export const departmentSlice = createSlice({
   },
   //내부 action 및 동기 action (Ajax처리시에는 사용하지 않음)
   reducers: {},
+
   //외부 action 및 비동기 action
   extraReducers: {
     [getList.pending]: (state, { payload }) => {

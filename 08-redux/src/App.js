@@ -4,6 +4,8 @@ import { NavLink, Routes, Route } from "react-router-dom";
 
 import ReduxToolkitCounter from "./pages/ReduxToolkitCounter";
 import ReduxToolkitDepartment from "./pages/ReduxToolkitDepartment";
+import ReduxToolkitProfessor from "./pages/ReduxToolkitProfessor";
+import ReduxToolkitStudent from "./pages/ReduxToolkitStudent";
 
 /* 메뉴링크 -> 06.hook-event 예제의 App.js파일의 내용과 동일*/
 const MenuLink = styled(NavLink)`
@@ -54,6 +56,8 @@ const App = () => {
 
       <MenuLink to="/redux_toolkit_counter">ReduxToolkitCounter</MenuLink>
       <MenuLink to="/redux_toolkit_department">ReduxToolkitDepartment</MenuLink>
+      <MenuLink to="/redux_toolkit_professor">ReduxToolkitProfessor</MenuLink>
+      <MenuLink to="/redux_toolkit_student">ReduxToolkitStudent</MenuLink>
       <hr />
       <Routes>
         <Route
@@ -63,6 +67,14 @@ const App = () => {
         <Route
           path="/redux_toolkit_department"
           element={<ReduxToolkitDepartment />}
+        />
+        <Route
+          path="/redux_toolkit_professor"
+          element={<ReduxToolkitProfessor />}
+        />
+        <Route
+          path="/redux_toolkit_student"
+          element={<ReduxToolkitStudent />}
         />
       </Routes>
     </div>

@@ -9,7 +9,7 @@ import MovieRankList from "../components/MovieRankList";
 import MovieRankChart from "../components/MovieRankChart";
 
 //로딩컴포넌트
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import "react-loader-spinner";
 import { BallTriangle } from "react-loader-spinner";
 
 import style from "../assets/scss/style.module.scss";

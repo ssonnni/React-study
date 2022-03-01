@@ -70,7 +70,7 @@ export const movieRankSlice = createSlice({
       /* 필요한 경우 Ajax 결과를 가공한다 */
       const chartData = { movieNm: [], audiCnt: [] };
 
-      payload.data.boxOfficeResult.DailyBoxOfficeList.forEach((v, i) => {
+      payload.data.boxOfficeResult.dailyBoxOfficeList.forEach((v, i) => {
         chartData.movieNm[i] = v.movieNm;
         chartData.audiCnt[i] = v.audiCnt;
       });

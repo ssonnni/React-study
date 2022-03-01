@@ -52,7 +52,7 @@ export const movieRankSlice = createSlice({
     /* 상태값 구조 정의 (자유롭게 구성가능함) */
     rt: null, //HTTP 상태코드 (200,404,500 등)
     rtmsg: null, // 에러메세지
-    item: [], // Ajax 처리를 통해 수신된 데이터
+    data: null, // Ajax 처리를 통해 수신된 데이터
     loading: false, //  로딩 여부
   },
   //내부 action 및 동기 action (Ajax처리시에는 사용하지 않음)
@@ -83,7 +83,7 @@ export const movieRankSlice = createSlice({
         ...state,
         rt: payload.status,
         rtmsg: payload.statusText,
-        item: payload.data,
+        data: payload.data,
         loading: false,
       };
     },

@@ -16,7 +16,7 @@ const MovieRankList = ({ boxOfficeResult }) => {
         </tr>
       </thead>
       <tbody>
-        {boxOfficeResult.dailyboxOfficeList.map((item, index) => (
+        {boxOfficeResult.dailyBoxOfficeList.map((item, index) => (
           <tr key={index}>
             <td className={style.textCenter}>{item.rank}</td>
             <td className={style.textCenter}>{item.movieNm}</td>

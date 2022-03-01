@@ -55,7 +55,10 @@ const MovieRankPage = () => {
         </div>
       ) : (
         <div>
-          <MovieRankChart chartData={data.chartData} targetDt={targetDt} />
+          <MovieRankChart
+            chartData={data.chartData}
+            targetDt={targetDt}
+          ></MovieRankChart>
           <MovieRankList boxOfficeResult={data.boxOfficeResult}></MovieRankList>
         </div>
       )}

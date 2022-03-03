@@ -37,12 +37,37 @@ const MenuLink = styled(NavLink)`
 `;
 
 const Top = () => {
+  //HTML 태그에 접근할 수 있는 참조변수 생성
+  const inputQuery = React.useRef();
+  const { rt, rtmsg, item, loading } = useSelector((state) => state.blog);
+  const dispatch = useDispatch();
+
+  // 검색폼에 대한 이벤트 핸들러
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    //input태그의 입력값 가져오기
+    const value = inputQuery.current.value;
+
+    if (!value) {
+      inputQuery.current.focus();
+      alert("검색어를 입력하세요.");
+      return;
+    }
+
+    console.log(value);
+    dispatch(getBookList(value));
+    dispatch(getCafeList(value));
+    dispatch(getBlogList(value));
+    dispatch(getImageList(value));
+    dispatch(getWebList(value));
+  };
   return (
     <div>
       <h1>카카오 검색</h1>
       <hr />
-      <form>
-        <input type="search" name="query" />
+      <form onSubmit={handleSubmit}>
+        <input type="search" name="query" ref={inputQuery} />
         <button type="submit">검색</button>
       </form>
       <hr />

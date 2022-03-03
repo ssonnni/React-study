@@ -8,7 +8,8 @@ export const getList = createAsyncThunk(
     let result = null;
 
     try {
-      const apiUrl = "https://newsapi.org/v2/top-headlines";
+      const apiUrl =
+        "https://newsapi.org/v2/top-headlines?country=kr&apiKey=7297874f0a354b2aa50ee06c8738cc46";
       result = await axios.get(apiUrl, {
         params: {
           key: "7297874f0a354b2aa50ee06c8738cc46",
@@ -25,6 +26,7 @@ export const getList = createAsyncThunk(
 );
 
 /* Slice 정의 (Action함수 = Reducer의 개념) */
+/* payload = axios로 받아오는 result 값 중요!!! */
 const newsSlice = createSlice({
   name: "news",
   initialState: {

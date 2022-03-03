@@ -1,11 +1,18 @@
 import React from "react";
-import { NavLink, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+
+import Meta from "./components/Meta";
+import NewsPage from "./pages/NewsPage";
+import style from "./assets/scss/style.module.scss";
 
 const App = () => {
   return (
-    <div>
+    <div calssName={style.container}>
+      <Meta />
+
       <Routes>
-        <Route path="url" element={<컴포명 />} />
+        <Route path="/" element={<NewsPage />} />
+        <Route path="/:category" element={<NewsPage />} />
       </Routes>
     </div>
   );

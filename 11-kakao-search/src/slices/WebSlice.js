@@ -8,10 +8,10 @@ export const getWebList = createAsyncThunk(
     let result = null;
 
     try {
-      const apiUrl = "https://dapi.kakao.com";
+      const apiUrl = "https://dapi.kakao.com//v2/search/web";
       result = await axios.get(apiUrl, {
-        params: { query: [payload] },
-        headers: { Authorization: "1dbc70518b3abd2851c32a80d8685053" },
+        params: { query: payload },
+        headers: { Authorization: "KakaoAK 1dbc70518b3abd2851c32a80d8685053" },
       });
     } catch (err) {
       result = rejectWithValue(err.response);

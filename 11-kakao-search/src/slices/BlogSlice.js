@@ -2,16 +2,18 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 /* 비동기 처리 함수 구현 */
+//여러개의 slice가 사용되는 경우 함수에 적용되는 별칭이 다른파일과
+//중복되지 않도록"파일명/함수별칭"으로 적용해야 데이터 각각 관리해줌
 export const getBlogList = createAsyncThunk(
   "BLOG/GET_LIST",
   async (payload, { rejectWithValue }) => {
     let result = null;
 
     try {
-      const apiUrl = "https://dapi.kakao.com";
+      const apiUrl = "https://dapi.kakao.com//v2/search/blog";
       result = await axios.get(apiUrl, {
-        params: { query: [payload] },
-        headers: { Authorization: "1dbc70518b3abd2851c32a80d8685053" },
+        params: { query: payload },
+        headers: { Authorization: "KakaoAK 1dbc70518b3abd2851c32a80d8685053" },
       });
     } catch (err) {
       result = rejectWithValue(err.response);

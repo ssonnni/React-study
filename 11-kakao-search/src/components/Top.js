@@ -2,6 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { getBlogList } from "../slices/BlogSlice";
+import { getBookList } from "../slices/BookSlice";
+import { getCafeList } from "../slices/CafeSlice";
+import { getImageList } from "../slices/ImageSlice";
+import { getWebList } from "../slices/WebSlice";
+
 const MenuLink = styled(NavLink)`
   font-size: 20px;
   cursor: pointer;

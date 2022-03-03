@@ -13,7 +13,7 @@ import style from "./assets/scss/style.module.scss";
 
 const App = () => {
   return (
-    <div calssName={style.container}>
+    <div className={style.container}>
       <Meta />
       <Top />
 

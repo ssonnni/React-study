@@ -9,16 +9,19 @@ export const getBlogList = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     let result = null;
 
-    try {
-      const apiUrl = "https://dapi.kakao.com//v2/search/blog";
-      result = await axios.get(apiUrl, {
-        params: { query: payload },
-        headers: { Authorization: "KakaoAK 1dbc70518b3abd2851c32a80d8685053" },
-      });
-    } catch (err) {
-      result = rejectWithValue(err.response);
+    if (payload) {
+      try {
+        const apiUrl = "https://dapi.kakao.com//v2/search/blog";
+        result = await axios.get(apiUrl, {
+          params: { query: payload },
+          headers: {
+            Authorization: "KakaoAK 1dbc70518b3abd2851c32a80d8685053",
+          },
+        });
+      } catch (err) {
+        result = rejectWithValue(err.response);
+      }
     }
-
     return result;
   }
 );

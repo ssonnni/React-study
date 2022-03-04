@@ -9,11 +9,11 @@ export const getBlogList = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     let result = null;
 
-    if (payload) {
+    if (payload.query) {
       try {
         const apiUrl = "https://dapi.kakao.com//v2/search/blog";
         result = await axios.get(apiUrl, {
-          params: { query: payload },
+          params: { query: payload.query, page: payload.page, size: 20 },
           headers: {
             Authorization: "KakaoAK 2d3bf2fdb87b3e163de0c54eccd37c15",
           },
@@ -45,7 +45,14 @@ const blogSlice = createSlice({
     [getBlogList.pending]: (state, { payload }) => {
       return { ...state, loading: true };
     },
-    [getBlogList.fulfilled]: (state, { payload }) => {
+    [getBlogList.fulfilled]: (state, { meta, payload }) => {
+      //1페이지가 아닌 경우에는 리덕스에 저장되어 있는 현재 데이터에
+      //새로 받아온 데이터 병합하여 Ajax의 결과를 재구성한다.
+      if (meta.arg.page > 1) {
+        payload.data.documents = state.item.documents.concat(
+          payload.data.documents
+        );
+      }
       return {
         ...state,
         rt: payload.status,

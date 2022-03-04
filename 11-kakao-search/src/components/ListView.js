@@ -11,12 +11,17 @@ import noimg from "../assets/img/noimg.png";
 @returns
 */
 
-const ListView = ({ documents, thumb }) => {
+const ListView = ({ documents, thumb, inview }) => {
   return (
     <ul className={style.mediaList}>
       {/* 검색결과에 대한 반복문 수행 */}
       {documents.map((item, index) => (
-        <li className={style.mediaItem} key={index}>
+        //마지막 항목에대해 ref속성에 inview값을 추가한다.
+        <li
+          className={style.mediaItem}
+          key={index}
+          {...(documents.length - 1 === index ? { ref: inview } : {})}
+        >
           {/* props로 전달된 thumb가 true인 경우에만 thumbnail이라는 class를 적용*/}
           <a
             href={item.url}
@@ -55,31 +60,34 @@ const ListView = ({ documents, thumb }) => {
               {/* 저자 정보가 있을 경우만 출력되는 영역 (for 책검색) */}
               {item.authors && (
                 <span>
-                  <strong>{item.authors.join(".")}</strong> /
+                  <strong>{item.authors.join(",")}</strong> /
                 </span>
               )}
               {/* 출판사 정보가 있을 경우만 출력되는 영역 (for 책검색) */}
               {item.publisher && (
                 <span>
-                  <strong>{item.publisher.join(".")}</strong> /
+                  <strong>{item.publisher}</strong> /
                 </span>
               )}
               {/* 카페이름이 있는 경우만 출력되는 영역 (for 카페 검색) */}
               {item.cafename && (
                 <span>
-                  <strong>{item.cafename.join(".")}</strong> /
+                  <strong>{item.cafename}</strong> /
                 </span>
               )}
               {/* 블로그 이름이 있는 경우만 출력되는 영역 (for 블로그 검색) */}
               {item.blogname && (
                 <span>
-                  <strong>{item.blogname.join(".")}</strong> /
+                  <strong>{item.blogname}</strong> /
                 </span>
               )}
               {/* 날짜정보가 있는 경우만 출력되는 영역 (for 전체) */}
               {item.datetime && (
                 <span>
-                  <strong>{item.datetime.join(".")}</strong> /
+                  <strong>
+                    {dayjs(item.datetime).format("YYYY-MM-DD hh:mm")}
+                  </strong>{" "}
+                  /
                 </span>
               )}
             </p>

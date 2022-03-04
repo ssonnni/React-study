@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getImageList } from "../slices/ImageSlice";
 import { Oval } from "react-loader-spinner";
 
+import ImageView from "../components/ImageView";
+
 //react-loader-spinner가 업데이트되면서 더이상 css가 사용되지 않음
 //import 'react-loader-spinner/dist.loader/css/react-loader-spinner.css';
 
@@ -46,7 +48,7 @@ const ImagePage = ({ query }) => {
           <p>{rtmsg}</p>
         </div>
       ) : (
-        <code>{JSON.stringify(item)}</code>
+        <ImageView documents={item.documents} />
       )}
     </div>
   );

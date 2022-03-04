@@ -13,7 +13,7 @@ export const getCafeList = createAsyncThunk(
         result = await axios.get(apiUrl, {
           params: { query: payload },
           headers: {
-            Authorization: "KakaoAK 1dbc70518b3abd2851c32a80d8685053",
+            Authorization: "KakaoAK 2d3bf2fdb87b3e163de0c54eccd37c15",
           },
         });
       } catch (err) {

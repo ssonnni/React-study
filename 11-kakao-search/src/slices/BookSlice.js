@@ -9,11 +9,11 @@ export const getBookList = createAsyncThunk(
 
     if (payload) {
       try {
-        const apiUrl = "https://dapi.kakao.com//v2/search/book";
+        const apiUrl = "https://dapi.kakao.com//v3/search/book";
         result = await axios.get(apiUrl, {
           params: { query: payload },
           headers: {
-            Authorization: "KakaoAK 1dbc70518b3abd2851c32a80d8685053",
+            Authorization: "KakaoAK 2d3bf2fdb87b3e163de0c54eccd37c15",
           },
         });
       } catch (err) {

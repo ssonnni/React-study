@@ -26,7 +26,8 @@ const ImagePage = ({ query }) => {
   return (
     <div>
       {/* 로딩바 */}
-      {loading && (
+      {loading &
+      (
         <Oval
           color="#ff6600"
           height={100}

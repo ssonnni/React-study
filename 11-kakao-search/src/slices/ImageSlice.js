@@ -51,6 +51,7 @@ const imageSlice = createSlice({
           payload.data.documents
         );
       }
+
       return {
         ...state,
         rt: payload.status,

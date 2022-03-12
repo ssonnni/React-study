@@ -52,7 +52,7 @@ const allSlice = createSlice({
       };
 
       //2) 일주일간의 확진자 현황
-      const confirmedState = { 날짜: [], 누적확진: [], 일일확진: [] };
+      const confirmState = { 날짜: [], 누적확진: [], 일일확진: [] };
 
       //3)일주일간의 격리해제 현황
       const releaseState = { 날짜: [], 누적격리해제: [], 일일격리해제: [] };
@@ -80,46 +80,47 @@ const allSlice = createSlice({
         accState.사망 += cityItem.death_acc[lastIndex];
 
         //일주일 전에 해당하는 위치를 가리키는 인덱스
-        const weekIndex = cityItem.confirmed_acc.length -8;
+        const weekIndex = cityItem.confirmed_acc.length - 8;
 
         //일주일치를 반복(i=ajax로 가져온 전체 배열index, j=그래프용으로 생성한 weekState의 index)
-        for (let i=weekIndex, j=0; i<cityItem.confirmed_acc.length; i++, j++){
+        for (
+          let i = weekIndex, j = 0;
+          i < cityItem.confirmed_acc.length;
+          i++, j++
+        ) {
           //confirmState.날짜 배열에 cityItem.data[i]과 일치하는 값의 위치를 검색
           //-->일치하는 정보가 없다면 (=신규로 추가되는 데이터라면?) -1반환됨
-          if (confirmState.날짜.indexOf(cityItem.data[i] === - 1){
+          if (confirmState.날짜.indexOf(cityItem.date[i]) === -1) {
             //신규항목이므로 데이터 추가
-            confirmState.날짜.push(cityItem.data[i]);
+            confirmState.날짜.push(cityItem.date[i]);
             confirmState.누적확진.push(parseInt(cityItem.confirmed_acc[i]));
             confirmState.일일확진.push(parseInt(cityItem.confirmed[i]));
-            releaseState.날짜.push(cityItem.data[i]);
+            releaseState.날짜.push(cityItem.date[i]);
             releaseState.누적격리해제.push(parseInt(cityItem.confirmed_acc[i]));
             releaseState.일일격리해제.push(parseInt(cityItem.confirmed[i]));
+          } else {
+            confirmState.누적확진[j] += parseInt(cityItem.confirmed_acc[i]);
+            confirmState.일일확진[j] += parseInt(cityItem.confirmed[i]);
+            releaseState.누적격리해제[j] += parseInt(cityItem.confirmed_acc[i]);
+            releaseState.일일격리해제[j] += parseInt(cityItem.confirmed[i]);
           }
-        else {
-          confirmState.누적확진[j] += parseInt(cityItem.confirmed_acc[i]);
-          confirmState.일일확진[j] += parseInt(cityItem.confirmed[i]);
-          releaseState.누적격리해제[j] += parseInt(cityItem.confirmed_acc[i]);
-          releaseState.일일격리해제[j] += parseInt(cityItem.confirmed[i]);
         }
-      }
       });
-      
 
-      //추출한 값을 통신결과에 병합한다. 
+      //추출한 값을 통신결과에 병합한다.
       const response = {
         ...data,
-        result : {
+        result: {
           accState: accState,
           confirmState: confirmState,
-          releaseState: releaseState
-        }
+          releaseState: releaseState,
+        },
       };
 
       //Ajax 결과를 로그에 출력해보자
-      console.group('데이터 변환 결과');
+      console.group("데이터 변환 결과");
       console.debug(response);
       console.groupEnd();
-
 
       return {
         ...state,
@@ -136,8 +137,8 @@ const allSlice = createSlice({
         rtmsg: payload?.statusText ? payload.statusText : "Server Error",
         item: payload?.data,
         loading: false,
-      }
-    }
+      };
+    },
   },
 });
 

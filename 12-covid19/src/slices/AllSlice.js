@@ -101,8 +101,26 @@ const allSlice = createSlice({
           releaseState.누적격리해제[j] += parseInt(cityItem.confirmed_acc[i]);
           releaseState.일일격리해제[j] += parseInt(cityItem.confirmed[i]);
         }
-        
+      }
       });
+      
+
+      //추출한 값을 통신결과에 병합한다. 
+      const response = {
+        ...data,
+        result : {
+          accState: accState,
+          confirmState: confirmState,
+          releaseState: releaseState
+        }
+      };
+
+      //Ajax 결과를 로그에 출력해보자
+      console.group('데이터 변환 결과');
+      console.debug(response);
+      console.groupEnd();
+
+
       return {
         ...state,
         rt: payload.status,
@@ -110,7 +128,7 @@ const allSlice = createSlice({
         item: payload.data,
         loading: false,
       };
-    
+    },
     [getAllList.rejected]: (state, { payload }) => {
       return {
         ...state,
@@ -118,8 +136,8 @@ const allSlice = createSlice({
         rtmsg: payload?.statusText ? payload.statusText : "Server Error",
         item: payload?.data,
         loading: false,
-      };
-    },
+      }
+    }
   },
 });
 

@@ -4,6 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllList } from "../slices/AllSlice";
 import { Oval } from "react-loader-spinner";
 
+import Meta from "../components/Meta";
+import KoreaStateTable from "../components/KoreaStateTable";
+import KoreaConfirmChart from "../components/KoreaConfirmChart";
+import KoreaReleaseChart from "../components/KoreaReleaseChart";
+
 import style from "../assets/scss/style.module.scss";
 
 const KoreaStatePage = () => {
@@ -22,6 +27,12 @@ const KoreaStatePage = () => {
 
   return (
     <div>
+      <Meta
+        title="국내 발생 현황 ::: 리액트 코로나19 상황판"
+        description="React.js로 구현한 코로나19 국내 발생 현황 상황판입니다."
+        keywords="React,코로나19,Covid19,국내발생현황"
+      />
+
       {/* 로딩바 */}
       {loading && (
         <Oval
@@ -45,7 +56,15 @@ const KoreaStatePage = () => {
           <p>{rtmsg}</p>
         </div>
       ) : (
-        <code>{JSON.stringify(item)}</code>
+        <div className={style.section}>
+          {item.result && (
+            <div>
+              <KoreaStateTable accState={item.result.accState} />
+              <KoreaConfirmChart confirmState={item.result.confirmState} />
+              <KoreaReleaseChart releaseState={item.result.releaseState} />
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

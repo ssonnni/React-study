@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { getNowList } from "../slices/NowSlice";
 import { Oval } from "react-loader-spinner";
 
+import SidoConfirmAccChart from "../components/SidoConfirmAccChart";
+import SidoStateTable from "../components/SidoStateTable";
+
 import style from "../assets/scss/style.module.scss";
 
 const SidoStatePage = () => {
@@ -45,7 +48,15 @@ const SidoStatePage = () => {
           <p>{rtmsg}</p>
         </div>
       ) : (
-        <code>{JSON.stringify(item)}</code>
+        <div className={style.section}>
+          {item.result && (
+            <SidoConfirmAccChart
+              지역명={item.result.지역명}
+              누적확진자={item.result.누적확진자}
+            />
+          )}
+          {item.state && <SidoStateTable state={item.state} />}
+        </div>
       )}
     </div>
   );

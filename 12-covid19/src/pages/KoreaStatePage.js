@@ -23,6 +23,7 @@ const KoreaStatePage = () => {
     if (!loading) {
       dispatch(getAllList());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

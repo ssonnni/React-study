@@ -7,7 +7,7 @@ const KoreaStateTable = ({ accState }) => {
   return (
     <div className={style.section}>
       <h3 className={style.title}>
-        누적 확진자 현황{" "}
+        누적 확진자 현황
         <small>({dayjs(accState.기준시각).format("M/D h")}시 기준)</small>
       </h3>
       <table className={style.table}>

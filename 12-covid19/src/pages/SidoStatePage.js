@@ -21,6 +21,7 @@ const SidoStatePage = () => {
     if (!loading) {
       dispatch(getNowList());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
